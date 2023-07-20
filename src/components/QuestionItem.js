@@ -9,15 +9,26 @@ function QuestionItem({ question }) {
     </option>
   ));
 
+  function HandleRemoveQuestion()
+  {
+    fetch(`http://localhost:4000/questions/${id}`, {
+      method: "DELETE",
+    })
+  }
+
   return (
     <li>
       <h4>Question {id}</h4>
       <h5>Prompt: {prompt}</h5>
       <label>
         Correct Answer:
-        <select defaultValue={correctIndex}>{options}</select>
+        <select defaultValue={correctIndex}>
+          {options}
+        </select>
       </label>
-      <button>Delete Question</button>
+      <button
+      onClick={HandleRemoveQuestion}
+      >Delete Question</button>
     </li>
   );
 }
